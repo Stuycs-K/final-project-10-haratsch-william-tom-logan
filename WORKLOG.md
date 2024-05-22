@@ -1,17 +1,17 @@
 # Work Log
 
-## GROUP MEMBER 1
+## William Haratsch
 
-### date x
+### May 22nd
 
-info
+Completed Project Outline Draft.
 
 ### date y
 
 info
 
 
-## GROUP MEMBER 2
+## Logan Tom
 
 ### date x
 
