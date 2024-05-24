@@ -15,7 +15,7 @@ info
 
 ### date x
 
-info
+Did research on perlin noise and thought about how to implement
 
 ### date y
 
