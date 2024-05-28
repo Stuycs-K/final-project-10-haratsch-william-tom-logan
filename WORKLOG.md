@@ -6,7 +6,8 @@
 
 Completed Project Outline Draft.
 
-### date y
+### May 28th
+Planned out the utilization of layered noise maps, and fractals as a noise map.
 
 info
 
