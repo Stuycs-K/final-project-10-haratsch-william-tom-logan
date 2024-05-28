@@ -13,10 +13,13 @@ info
 
 ## Logan Tom
 
-### date x
+### May 23rd
 
 Did research on perlin noise and thought about how to implement
 
-### date y
+### May 24th
 
-info
+simple implementation of noise map into steganography
+
+### May 28th
+Discussed and determined how to complexify the algorithm
