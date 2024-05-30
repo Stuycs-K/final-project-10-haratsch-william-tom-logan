@@ -14,10 +14,14 @@ info
 
 ## Logan Tom
 
-### date x
+### May 23rd
 
 Did research on perlin noise and thought about how to implement
 
-### date y
+### May 24th
 
-info
+Created simple implementations for noise to test difficulty of implementation and proof of concept
+
+### May 30th
+
+
