@@ -1,4 +1,4 @@
-# Work Log
+ Work Log
 
 ## William Haratsch
 
@@ -11,6 +11,9 @@ Planned out the utilization of layered noise maps, and fractals as a noise map.
 
 ### May 29th
 Planned out implementation of BPCS steganography in Processing.
+
+### May 30th
+Wrote code for the modifyImageBPCS() method. It iterates through the pixels, checking for complexity. If the complexity is below a certain threshhold, the data will be written into the pixel.
 
 ## Logan Tom
 
