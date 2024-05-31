@@ -22,6 +22,12 @@ Did research on perlin noise and thought about how to implement
 
 Created simple implementations for noise to test difficulty of implementation and proof of concept
 
-### May 30th
+### May 28th
+Discussed and determined how to complexify the algorithm
 
+### May 29th 
+Researched BPCS and talked about how to implement
+
+### May 30th
+Implement noise map into data encryption and theorized BPCS implementation
 
