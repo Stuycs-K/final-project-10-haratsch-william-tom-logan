@@ -19,6 +19,7 @@ info
 Did research on perlin noise and thought about how to implement
 
 ### May 24th
+<<<<<<< HEAD
 
 Created simple implementations for noise to test difficulty of implementation and proof of concept
 
@@ -31,3 +32,16 @@ Researched BPCS and talked about how to implement
 ### May 30th
 Implement noise map into data encryption and theorized BPCS implementation
 
+=======
+
+simple implementation of noise map into steganography
+
+### May 28th
+Discussed and determined how to complexify the algorithm
+
+### May 29th 
+Researched BPCS and talked about how to implement
+
+### May 30th
+Implement noise map into data encryption and theorized BPCS implementation
+>>>>>>> Logans
