@@ -170,13 +170,33 @@ void modifyImageBPCS(PImage img, int[] messageArray){
   //1200 is the length
   img.loadPixels();
   int totalPixels = width * height;
-  //int[][] pixelArray = new int[600][1200];
-  //int arrayColumnIndex = 0;
-  //int arrayRowIndex = 0;
+  int[][] pixelArray = new int[600][1200];
+  int arrayColumnIndex = 0;
+  int arrayRowIndex = 0;
+  color getPixel;
+  int index = 0;
+  for(int i = 0; i < height; i++){
+    for(int j = 0; j < width; j++){
+      getPixel = get(j, i);
+      if(j > 0 && index < messageArray.length){
+        int red = (int) red(getPixel);
+        int red01 = (int) red(get(i, j - 1));
+        int red02 = (int) red(get(i + 1, j - 1));
+        int red03 = (int) red(get(i + 1, j));
+        if(red != red01 && red != red02 && red != red03){
+          red = red / 4;
+          red = red * 4;
+          red |= messageArray[index++];
+          set(j, i, img);
+        }
+      }
+    }
+  }
+  /*
   int index = 0;
   int redBefore;
   int redAfter;
-  for(int i = 1; i < totalPixels; i++){
+  for(int i = 1; i < img.pixels.length; i++){
     if(i > 0 && i < (totalPixels - 1) && index < messageArray.length){
       redBefore = (int) red(pixels[i - 1]);
       redAfter = (int) red(pixels[i + 1]);
@@ -189,5 +209,6 @@ void modifyImageBPCS(PImage img, int[] messageArray){
       }
     }    
   }
+  */
   img.updatePixels();
 }
