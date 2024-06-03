@@ -27,7 +27,7 @@ void diff(int i) {
     }
     compared.updatePixels();
     image(compared, 0, 0);
-    text("DIFF", 1000, 500);
+    text("DIFF", 800, 500);
   } else if (i == 2) {
     fill(0);
     textSize(30);
@@ -40,7 +40,7 @@ void diff(int i) {
     }
     compared.updatePixels();
     image(compared, 0, 0);
-    text("DIFF_R", 1000, 500);
+    text("DIFF_R", 800, 500);
   } else if (i == 3) {
     fill(0);
     textSize(30);
@@ -53,7 +53,7 @@ void diff(int i) {
     }
     compared.updatePixels();
     image(compared, 0, 0);
-    text("DIFF_G", 1000, 500);
+    text("DIFF_G", 800, 500);
   } else if (i == 4) {
     fill(0);
     textSize(30);
@@ -66,12 +66,65 @@ void diff(int i) {
     }
     compared.updatePixels();
     image(compared, 0, 0);
-    text("DIFF_B", 1000, 500);
+    text("DIFF_B", 800, 500);
+  } else if (i == 5) {
+    compared.pixels = reg.pixels;
+    fill(0);
+    textSize(30);
+    for (int x = 0; x < reg.pixels.length; x++) {
+      if ((reg.pixels[x]) == (mod.pixels[x])) {
+        compared.pixels[x] = reg.pixels[x];
+      } else {
+        compared.pixels[x] = color(225);
+      }
+    }
+    compared.updatePixels();
+    image(compared, 0, 0);
+    text("DIFF on image", 800, 500);
+  } else if (i == 6) {
+    fill(0);
+    textSize(30);
+    for (int x = 0; x < reg.pixels.length; x++) {
+      if (red(reg.pixels[x]) == red(mod.pixels[x])) {
+        compared.pixels[x] = reg.pixels[x];
+      } else {
+        compared.pixels[x] = color(225);
+      }
+    }
+    compared.updatePixels();
+    image(compared, 0, 0);
+    text("DIFF red on image", 800, 500);
+  }  else if (i == 7) {
+    fill(0);
+    textSize(30);
+    for (int x = 0; x < reg.pixels.length; x++) {
+      if (blue(reg.pixels[x]) == blue(mod.pixels[x])) {
+        compared.pixels[x] = reg.pixels[x];
+      } else {
+        compared.pixels[x] = color(225);
+      }
+    }
+    compared.updatePixels();
+    image(compared, 0, 0);
+    text("DIFF blue on image", 800, 500);
+  }else if (i == 8) {
+    fill(0);
+    textSize(30);
+    for (int x = 0; x < reg.pixels.length; x++) {
+      if (green(reg.pixels[x]) == green(mod.pixels[x])) {
+        compared.pixels[x] = reg.pixels[x];
+      } else {
+        compared.pixels[x] = color(225);
+      }
+    }
+    compared.updatePixels();
+    image(compared, 0, 0);
+    text("DIFF green on image", 800, 500);
   }
 }
 void keyReleased() {
   if (key == ' ') {
-    if (i < 5)
+    if (i < 9)
       diff(i++);
     else {
       i = 0;
