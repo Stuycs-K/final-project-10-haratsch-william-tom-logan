@@ -47,6 +47,7 @@ void setup() {
   //modifyImage(img, parts);
   //save the modified image to disk.
   img.save("modifiedCat.png");  
+  diff(0);
   //println(imgTwo.width,imgTwo.height);
   }
 
@@ -165,50 +166,33 @@ void modifyImage(PImage img, int[]messageArray) {
   img.updatePixels();
 }
 
-void modifyImageBPCS(PImage img, int[] messageArray){
-  //600 is the height
-  //1200 is the length
-  img.loadPixels();
-  int totalPixels = width * height;
-  int[][] pixelArray = new int[600][1200];
-  int arrayColumnIndex = 0;
-  int arrayRowIndex = 0;
-  color getPixel;
-  int index = 0;
-  for(int i = 0; i < height; i++){
-    for(int j = 0; j < width; j++){
-      getPixel = get(j, i);
-      if(j > 0 && index < messageArray.length){
-        int red = (int) red(getPixel);
-        int red01 = (int) red(get(i, j - 1));
-        int red02 = (int) red(get(i + 1, j - 1));
-        int red03 = (int) red(get(i + 1, j));
-        if(red != red01 && red != red02 && red != red03){
-          red = red / 4;
-          red = red * 4;
-          red |= messageArray[index++];
-          set(j, i, img);
+void modifyImageBPCS(PImage img, int[] messageArray) {
+    img.loadPixels();
+    int index = 0; // Index for the messageArray
+    color currentOldPixel;
+    int redOldPixel;
+    int greenOldPixel;
+    int blueOldPixel;
+    boolean pixelExists = false;
+    for (int i = 0; i < img.pixels.length; i++) {
+        // Only proceed if there is more message to encode
+        if (index < messageArray.length) {
+            color currentPixel = img.pixels[i];
+            int red = (int) red(currentOldPixel);
+            int green = (int) green(currentOldPixel);
+            int blue = (int) blue(currentOldPixel);
+
+            // Modify the last two bits of the red channel
+            red = (red & 0xFC) | messageArray[index]; // Clear the last two bits then OR with message bits
+            index++;
+
+            // Set the modified color back to the image
+            img.pixels[i] = color(red, green, blue);
+        } else {
+            // Optionally mark the end of the message in some way, if needed
+            break;
         }
-      }
     }
-  }
-  /*
-  int index = 0;
-  int redBefore;
-  int redAfter;
-  for(int i = 1; i < img.pixels.length; i++){
-    if(i > 0 && i < (totalPixels - 1) && index < messageArray.length){
-      redBefore = (int) red(pixels[i - 1]);
-      redAfter = (int) red(pixels[i + 1]);
-      int red = (int) red(img.pixels[i]);
-      if(red != redBefore && red != redAfter){
-        red = red / 4;
-        red = red * 4;
-        red |= messageArray[index++];
-        img.pixels[i] = color(red, green(img.pixels[i]), blue(img.pixels[i]));
-      }
-    }    
-  }
-  */
-  img.updatePixels();
+
+    img.updatePixels();
 }
