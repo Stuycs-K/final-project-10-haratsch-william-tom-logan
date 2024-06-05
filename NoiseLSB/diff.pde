@@ -1,7 +1,26 @@
 int i = 1;
+int j = 1;
+int BLACK = 1;
+int WHITE = 0;
 void draw() {
 }
-
+void show_bitplane(int i) {
+  PImage checking = loadImage("cat.png");
+  PImage bitplane = createImage(checking.width, checking.height, RGB);
+  checking.loadPixels();
+  bitplane.loadPixels();
+  int plane =  i;
+  for(int x = 0; x < checking.pixels.length; x++){
+    int current_bit = (checking.pixels[i] >> 8 - plane) & 1;
+    if(current_bit == WHITE){
+      bitplane.pixels[i] = color(255);
+    }
+    else{
+     bitplane.pixels[i] = color(0); 
+    }
+  }
+  bitplane.updatePixels();
+}
 void diff(int i) {
   PImage reg = loadImage("cat.png");
   PImage mod = loadImage("modifiedCat.png");
@@ -94,7 +113,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF red on image", 800, 500);
-  }  else if (i == 7) {
+  } else if (i == 7) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -107,7 +126,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF blue on image", 800, 500);
-  }else if (i == 8) {
+  } else if (i == 8) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -131,4 +150,11 @@ void keyReleased() {
       diff(i++);
     }
   }
+  if(key == 'b'){
+    if(j < 8){
+      show_bitplane(j++);
+  }
+  else{
+    j = 0;
+    show_bitplane(j++);
 }
