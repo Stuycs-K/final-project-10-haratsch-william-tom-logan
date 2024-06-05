@@ -10,6 +10,7 @@ Sixth: 1
 Seventh: 0
 Eighth: 0
 and each plane is made up of these values for the color instead of the original 01100100.
+Below is a visual example
 ![Here is an image example](https://upload.wikimedia.org/wikipedia/commons/4/48/Lichtenstein_bitplanes.png)
 ## How do we use them
 The algorithm we used for this project is bit-plane complexity segmentation steganography (BPCS Steganography) and added noise maps to further encrypt our data. 
