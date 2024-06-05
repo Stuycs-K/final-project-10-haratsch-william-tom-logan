@@ -200,6 +200,16 @@ void modifyImageBPCS(PImage img, int[] messageArray) {
                 // Set the modified color back to the image
                 img.pixels[i] = color(redPixel, greenPixel, bluePixel);
               }
+              if(greenPixel != greenOldPixel && greenPixel != greenNewPixel){
+                greenPixel = (greenPixel & 0xFC) | messageArray[index];
+                index++;
+                img.pixels[i] = color(redPixel, greenPixel, bluePixel);
+              }
+              if(bluePixel != blueOldPixel && bluePixel != blueNewPixel){
+                bluePixel = (bluePixel & 0xFC) | messageArray[index];
+                index++;
+                img.pixels[i] = color(redPixel, greenPixel, bluePixel);
+              }
           }
         }
     }
