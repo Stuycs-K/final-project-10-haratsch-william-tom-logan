@@ -6,7 +6,7 @@ int FILE = 2;
 int DIFF = 3;
 int BPCS_LINEAR = 4;
 int BPCS_FILE = 5;
-int MODE = BPCS_LINEAR;
+int MODE = BPCS_FILE;
 
 //Note: for code that runs one time place all code in setup.
 void setup() {
@@ -173,26 +173,35 @@ void modifyImageBPCS(PImage img, int[] messageArray) {
     int redOldPixel;
     int greenOldPixel;
     int blueOldPixel;
-    boolean pixelExists = false;
+    color currentNewPixel;
+    int redNewPixel;
+    int greenNewPixel;
+    int blueNewPixel;
     for (int i = 0; i < img.pixels.length; i++) {
         // Only proceed if there is more message to encode
         if (index < messageArray.length) {
-            color currentPixel = img.pixels[i];
-            int red = (int) red(currentOldPixel);
-            int green = (int) green(currentOldPixel);
-            int blue = (int) blue(currentOldPixel);
-
-            // Modify the last two bits of the red channel
-            red = (red & 0xFC) | messageArray[index]; // Clear the last two bits then OR with message bits
-            index++;
-
-            // Set the modified color back to the image
-            img.pixels[i] = color(red, green, blue);
-        } else {
-            // Optionally mark the end of the message in some way, if needed
-            break;
+          if(i % img.pixels.length != 0 && i != (img.pixels.length - 1)){
+              color currentPixel = img.pixels[i];
+              int redPixel = (int) red(currentPixel);
+              int greenPixel = (int) green(currentPixel);
+              int bluePixel = (int) blue(currentPixel);
+              currentOldPixel = img.pixels[i - 1];
+              redOldPixel = (int) red(currentOldPixel);
+              greenOldPixel = (int) green(currentOldPixel);
+              blueOldPixel = (int) blue(currentOldPixel);
+              currentNewPixel = img.pixels[i + 1];
+              redNewPixel = (int) red(currentNewPixel);
+              greenNewPixel = (int) green(currentNewPixel);
+              blueNewPixel = (int) blue(currentNewPixel);
+              if(redPixel != redOldPixel && redPixel != redNewPixel){
+                // Modify the last two bits of the red channel
+                redPixel = (redPixel & 0xFC) | messageArray[index]; // Clear the last two bits then OR with message bits
+                index++;
+                // Set the modified color back to the image
+                img.pixels[i] = color(redPixel, greenPixel, bluePixel);
+              }
+          }
         }
     }
-
     img.updatePixels();
 }
