@@ -1,6 +1,20 @@
 # BPCS 
+## Bit planes
+A bit plane is essentially one eighth of the image where you take off each bit using the 0 or 1 value for black and white and creating an image off those values. If the red value is 01100100 the bit plane values for this is
+First: 0
+Second: 1
+Third: 1
+Fourth: 0
+Fifth: 0
+Sixth: 1
+Seventh: 0
+Eighth: 0
+and each plane is made up of these values for the color instead of the original 01100100.
+Below is a visual example
+![Here is an image example](https://upload.wikimedia.org/wikipedia/commons/4/48/Lichtenstein_bitplanes.png)
+## How do we use them
 The algorithm we used for this project is bit-plane complexity segmentation steganography (BPCS Steganography) and added noise maps to further encrypt our data. 
-Essentially what BPCS steganography does is check each pixel and compare its color to its surrounding neighbors, computing a complexity value. If the pixel is complex enough the code marks it as elligible to store data and stores the data inside the pixel. This is because the change would not seem as drastic and would be harder to notice. This algorithm lets you store more data within images compared to LSB.
+Essentially what BPCS steganography does is check each pixel and compare its color to its surrounding neighbors, computing a complexity value. If the pixel is complex enough the code marks it as elligible to store data and stores the data inside the pixel. This is because the change would not seem as drastic and would be harder to notice. Due to the way our brains see things changing complex sections of bit planes allows us to store more data within images compared to LSB only being able to alter 1/8th of each pixel.
 
 # Noise Map encryption
 Noise maps are functions which generate seemingly random values consistently given a seed. This lets us enocde and decode our data based off certain noise values. The encode algorithm should be something reversible given a key which the noise map generates for each pixel. We used a simple XOR function at first to do so. To solve the issue of not knowing the seed we stored the noise map seed in the first few pixels of the image. 

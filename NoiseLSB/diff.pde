@@ -4,12 +4,17 @@ int BLACK = 1;
 int WHITE = 0;
 void draw() {
 }
+<<<<<<< HEAD
 void show_bitplane(int i) {
+=======
+void show_red_bitplane(int i) {
+>>>>>>> 3490b33304ec38aa0e7af7824acf6599c0c71c2a
   PImage checking = loadImage("cat.png");
   PImage bitplane = createImage(checking.width, checking.height, RGB);
   checking.loadPixels();
   bitplane.loadPixels();
   int plane =  i;
+<<<<<<< HEAD
   for(int x = 0; x < checking.pixels.length; x++){
     int current_bit = (checking.pixels[i] >> 8 - plane) & 1;
     if(current_bit == WHITE){
@@ -21,6 +26,86 @@ void show_bitplane(int i) {
   }
   bitplane.updatePixels();
 }
+=======
+  if (i == 0) {
+    image(checking, 0, 0);
+    text("Original", 800, 500);
+  } else {
+    for (int x = 0; x < checking.pixels.length; x++) {
+      //
+      //int hi = (int)red(checking.pixels[i]);
+      //print(hi);
+      int current_bit = ((int)red(checking.pixels[x]) >> (8 - plane)) & 1;
+      //println("the current bit is " + current_bit);
+      if (current_bit == WHITE) {
+        bitplane.pixels[x] = color(255);
+      } else {
+        bitplane.pixels[x] = color(0);
+      }
+    }
+    bitplane.updatePixels();
+    image(bitplane, 0, 0);
+    fill(255, 0, 0);
+    textSize(50);
+    text("Red Bitplane " + i, 800, 500);
+  }
+}
+void show_blue_bitplane(int i) {
+  PImage checking = loadImage("cat.png");
+  PImage bitplane = createImage(checking.width, checking.height, RGB);
+  checking.loadPixels();
+  bitplane.loadPixels();
+  int plane =  i;
+  if (i == 0) {
+    image(checking, 0, 0);
+    text("Original", 800, 500);
+  } else {
+    for (int x = 0; x < checking.pixels.length; x++) {
+
+      int current_bit = ((int)blue(checking.pixels[x]) >> (8 - plane)) & 1;
+      if (current_bit == WHITE) {
+        bitplane.pixels[x] = color(255);
+      } else {
+        bitplane.pixels[x] = color(0);
+      }
+    }
+    bitplane.updatePixels();
+    image(bitplane, 0, 0);
+    fill(0, 0, 255);
+    textSize(50);
+    text("Blue Bitplane " + i, 800, 500);
+  }
+}
+void show_green_bitplane(int i) {
+  PImage checking = loadImage("cat.png");
+  PImage bitplane = createImage(checking.width, checking.height, RGB);
+  checking.loadPixels();
+  bitplane.loadPixels();
+  int plane =  i;
+  if (i == 0) {
+    image(checking, 0, 0);
+    text("Original", 800, 500);
+  } else {
+    for (int x = 0; x < checking.pixels.length; x++) {
+
+      int current_bit = ((int)green(checking.pixels[x]) >> (8 - plane)) & 1;
+      //println("the current bit is " + current_bit);
+      if (current_bit == WHITE) {
+        bitplane.pixels[x] = color(255);
+      } else {
+        bitplane.pixels[x] = color(0);
+      }
+    }
+    bitplane.updatePixels();
+    image(bitplane, 0, 0);
+    fill(0, 255, 0);
+    textSize(50);
+    text("Green Bitplane " + i, 800, 500);
+  }
+}
+
+
+>>>>>>> 3490b33304ec38aa0e7af7824acf6599c0c71c2a
 void diff(int i) {
   PImage reg = loadImage("cat.png");
   PImage mod = loadImage("modifiedCat.png");
@@ -150,6 +235,7 @@ void keyReleased() {
       diff(i++);
     }
   }
+<<<<<<< HEAD
   if(key == 'b'){
     if(j < 8){
       show_bitplane(j++);
@@ -157,4 +243,33 @@ void keyReleased() {
   else{
     j = 0;
     show_bitplane(j++);
+=======
+  if (key == 'r') {
+    if (j < 9) {
+      print("HI");
+      show_red_bitplane(j++);
+    } else {
+      j = 0;
+      show_red_bitplane(j++);
+    }
+  }
+  if (key == 'g') {
+    if (j < 9) {
+      print("HI");
+      show_green_bitplane(j++);
+    } else {
+      j = 0;
+      show_green_bitplane(j++);
+    }
+  }
+  if (key == 'b') {
+    if (j < 9) {
+      print("HI");
+      show_blue_bitplane(j++);
+    } else {
+      j = 0;
+      show_blue_bitplane(j++);
+    }
+  }
+>>>>>>> 3490b33304ec38aa0e7af7824acf6599c0c71c2a
 }

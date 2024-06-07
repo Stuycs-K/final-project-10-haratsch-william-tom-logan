@@ -45,3 +45,5 @@ Researched BPCS and talked about how to implement
 ### May 30th
 Implement noise map into data encryption and theorized BPCS implementation
 >>>>>>> Logans
+### June 2nd
+Worked on functionality and presentation
