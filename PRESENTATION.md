@@ -25,7 +25,10 @@ Our project uses both BPCS steganography and Noise maps to encrypt data and save
 Using the modify image method and passing the image to be modified, data(as file or String), and the noise map seed will convert the data into an array which is to be encrypted
 Then it encrypts the data using the seed and stores the data in the image using BPCS.
 What the user will see is a screen of the modified image. Then pressing space will allow you to go through the image checking the different pixels and either highlighting them or showing them as a black and white screen.
-The modified image will be stored in modifiedImage.jpg and can be accessed there.
+The modified image will be stored in modifiedImage.jpg and can be accessed there. 
+You are also able to use r g and b to view the bit planes of those colors and see how much they were altered and where they were altered through the steganography
 ## Decoding images
 To decode an image you have to give the modified file and whether or not the data was a file or string
 This will either print a string in the terminal or save the encrypted image as a file
+
+
