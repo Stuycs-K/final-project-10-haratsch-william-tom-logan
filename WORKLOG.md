@@ -20,6 +20,9 @@ At home: completed a simpler implementation of the modifyImageBPCS() method. Wil
 ### June 5th
 Rewrote the modifyImageBPCS() method, comparing the pixel before the pixel in question, the pixel after the pixel in question, and the pixel in question itself to determine whether to add the data to the pixel's channels. Tested an LSB implementation with red channel first, and then expanded it to all channels.
 
+### June 7th
+Added complexity algorithm, which calculates entropy values for each bit plane of each pixel. This will then be used to determine whether a bitplane is complex enough to store data.
+
 ## Logan Tom
 
 ### date x
