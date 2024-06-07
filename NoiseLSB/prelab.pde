@@ -31,7 +31,8 @@ void setup() {
   modifyImage(img, parts);
   ////save the modified image to disk.
   img.save("modifiedCat.png");
-  diff(0);
+  //diff(0);
+  show_red_bitplane(0);
   //image(img, 0, 0);
   // decode
   if (MODE == LINEAR|| MODE == SELECTIVE) {
