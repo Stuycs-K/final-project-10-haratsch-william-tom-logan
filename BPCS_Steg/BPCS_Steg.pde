@@ -12,7 +12,7 @@ int MODE = BPCS_FILE;
 void setup() {
   size(1200, 600);
   //0. If you want to change the size to display the image you can print the dimensions here:
-  
+  int blockSize = 60;
   //1. Add the cat.png file to the sketch before running.
   PImage img = loadImage("cat.png");
   println(img.width,img.height);
@@ -26,11 +26,14 @@ void setup() {
   }else if(MODE == BPCS_LINEAR){
      String messageToEncode = "This is a message encoded using LSBSteganography. There are two modes that can be selected. This text is getting longer but is just used to make more pixels different.";
      parts = messageToArray(messageToEncode);
-     modifyImageBPCS(img, parts);
+     //modifyImageBPCS(img, parts);
   }else if(MODE == BPCS_FILE){
     parts = fileToArray("OriginalGrumpy.png");
     println("Number of bytes:" + parts.length/4);
-    modifyImageBPCS(img, parts);
+    int numBlocksX = img.width / blockSize;
+    int numBlocksY = img.height / blockSize;
+    float[][][] entropies = calculateAllEntropies(img, blockSize);
+    //modifyImageBPCS(img, parts);
   }
     else{
     String messageToEncode = "This is a message encoded using LSBSteganography. There are two modes that can be selected. This text is getting longer but is just used to make more pixels different.";
@@ -215,3 +218,97 @@ void modifyImageBPCS(PImage img, int[] messageArray) {
     }
     img.updatePixels();
 }
+
+//complexity algorithm
+import java.util.HashMap;
+
+// Function to calculate entropy for a specific bit plane within a block
+float calculateEntropyForBitPlane(PImage img, int startX, int startY, int blockSize, int bit) {
+    HashMap<Integer, Integer> freq = new HashMap<>();
+    int totalPixels = 0;
+    img.loadPixels();
+    for (int y = startY; y < startY + blockSize; y++) {
+        for (int x = startX; x < startX + blockSize; x++) {
+            int idx = y * img.width + x;
+            color pixel = img.pixels[idx];
+            // Iterate over each color channel
+            for (int channel = 0; channel < 3; channel++) {
+                int value = (pixel >> (8 * channel)) & 0xFF;  // Isolate each color channel
+                int bitValue = (value >> bit) & 1;  // Extract the specific bit
+                freq.put(bitValue, freq.getOrDefault(bitValue, 0) + 1);
+                totalPixels++;
+            }
+        }
+    }
+
+    // Calculate entropy based on the frequency of 0s and 1s in this bit plane
+    double entropy = 0.0;
+    for (int count : freq.values()) {
+        double p = count / (double) (totalPixels);
+        if (p > 0) entropy -= p * Math.log(p) / Math.log(2);
+    }
+    return (float) entropy;
+}
+
+// Function to calculate and store entropy values for all blocks, for all bit planes
+float[][][] calculateAllEntropies(PImage img, int blockSize) {
+    int numBlocksX = img.width / blockSize;
+    int numBlocksY = img.height / blockSize;
+    float[][][] entropyValues = new float[numBlocksY][numBlocksX][8];
+
+    for (int blockY = 0; blockY < numBlocksY; blockY++) {
+        for (int blockX = 0; blockX < numBlocksX; blockX++) {
+            for (int bit = 0; bit < 8; bit++) {  // Assuming 8 bits per color channel
+                float entropy = calculateEntropyForBitPlane(img, blockX * blockSize, blockY * blockSize, blockSize, bit);
+                entropyValues[blockY][blockX][bit] = entropy;
+                println("Entropy for block (" + blockX + ", " + blockY + ") at bit " + bit + ": " + entropy);
+            }
+        }
+    }
+    return entropyValues;
+}
+
+// iterating through color channels along with 2D pixel positions:
+/*
+for (int y = 0; y < img.height; y++) {
+    for (int x = 0; x < img.width; x++) {
+        int idx = y * img.width + x;
+        color pixelColor = img.pixels[idx];
+        int redChannel = (pixelColor >> 16) & 0xFF;
+        int greenChannel = (pixelColor >> 8) & 0xFF;
+        int blueChannel = pixelColor & 0xFF;
+        // Process each channel
+    }
+}
+*/
+
+//Define Block Size: Decide the dimensions of each block (e.g., 8x8 pixels).
+//Iterate Over Blocks: Loop through the image in steps of the block size.
+//Access Pixels Within Each Block: For each block, iterate through each pixel in the block.
+
+/*
+int blockSize = 8; // Example block size
+int numBlocksX = img.width / blockSize;
+int numBlocksY = img.height / blockSize;
+
+for (int by = 0; by < numBlocksY; by++) {
+    for (int bx = 0; bx < numBlocksX; bx++) {
+        // Process each block
+        for (int i = 0; i < blockSize; i++) {
+            for (int j = 0; j < blockSize; j++) {
+                int x = bx * blockSize + j;
+                int y = by * blockSize + i;
+                int idx = y * img.width + x;
+                color pixelColor = img.pixels[idx];
+                // Manipulate pixelColor as needed
+            }
+        }
+    }
+}
+
+*/
+//size(1200, 600);
+//blockSize = 60?
+//1200/60 = 20
+//600/60 = 10
+//int blockSize = 60;
