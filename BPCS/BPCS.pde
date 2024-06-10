@@ -8,7 +8,11 @@ int BPCS_LINEAR = 4;
 int BPCS_FILE = 5;
 int MODE = BPCS_FILE;
 
-String[] args;
+//String[] args;
+int blockSize = 0;
+float threshold = 0;
+String inputFile = "";
+int entropyNum = 0;
 
 //Note: for code that runs one time place all code in setup.
 void setup() {
@@ -19,14 +23,25 @@ void setup() {
   //arg 1 is threshold
   //arg 2 is the hidden image
   //arg 3 is whether or not to print the entropy values. 0 being don't print and 1 being print.
-  if (args != null && args.length > 0) {
-    for (String arg : args) {
-      println("Argument: " + arg);
-    }
+  int blockSize = 0;
+  float threshold = 0;
+  String inputFile = "";
+  int entropyNum = 0;
+  if (args != null) {
+    blockSize = int(args[0]);
+    threshold = float(args[1]);
+    inputFile = args[2];
+    entropyNum = int(args[3]);
   } else {
     println("No arguments provided.");
+    exit();
   }
-  int blockSize = 16;
+  println("Arguments: ");
+  println("Block Size: " + blockSize);
+  println("Threshold: " + threshold);
+  println("Input File: " + inputFile);
+  println("entropyNum: " + entropyNum);
+  //int blockSize = 16;
   //1. Add the cat.png file to the sketch before running.
   PImage img = loadImage("cat.png");
   println(img.width,img.height);
@@ -42,11 +57,11 @@ void setup() {
      parts = messageToArray(messageToEncode);
      //modifyImageBPCS(img, parts);
   }else if(MODE == BPCS_FILE){
-    parts = fileToArray("AthensAncient.jpg");
+    parts = fileToArray(inputFile);
     println("Number of bytes:" + parts.length/4);
-    int numBlocksX = img.width / blockSize;
-    int numBlocksY = img.height / blockSize;
-    float threshold = 0.995;
+    //int numBlocksX = img.width / blockSize;
+    //int numBlocksY = img.height / blockSize;
+    //float threshold = 0.995;
     modifyImageBPCS(img, parts, threshold);
   }
     else{
@@ -390,12 +405,16 @@ float[][][] calculateAllEntropies(PImage img, int blockSize) {
     int numBlocksY = img.height / blockSize;
     float[][][] entropyValues = new float[numBlocksY][numBlocksX][8];
     //for loop
+    int entropyPrintCounter = 0;
     for (int blockY = 0; blockY < numBlocksY; blockY++) {
         for (int blockX = 0; blockX < numBlocksX; blockX++) {
             for (int bit = 0; bit < 8; bit++) {  // Assuming 8 bits per color channel
                 float entropy = calculateEntropyForBitPlane(img, blockX * blockSize, blockY * blockSize, blockSize, bit);
                 entropyValues[blockY][blockX][bit] = entropy;
-                //println("Entropy for block (" + blockX + ", " + blockY + ") at bit " + bit + ": " + entropy);
+                if(entropyNum == 1 && entropyPrintCounter < 9){
+                  println("Entropy for block (" + blockX + ", " + blockY + ") at bit " + bit + ": " + entropy);
+                  entropyPrintCounter++;
+                }
             }
         }
     }
