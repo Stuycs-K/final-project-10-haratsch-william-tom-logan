@@ -8,10 +8,24 @@ int BPCS_LINEAR = 4;
 int BPCS_FILE = 5;
 int MODE = BPCS_FILE;
 
+String[] args;
+
 //Note: for code that runs one time place all code in setup.
 void setup() {
   size(1200, 600);
   //0. If you want to change the size to display the image you can print the dimensions here:
+  // Check if arguments are provided
+  //arg 0 is blockSize
+  //arg 1 is threshold
+  //arg 2 is the hidden image
+  //arg 3 is whether or not to print the entropy values. 0 being don't print and 1 being print.
+  if (args != null && args.length > 0) {
+    for (String arg : args) {
+      println("Argument: " + arg);
+    }
+  } else {
+    println("No arguments provided.");
+  }
   int blockSize = 16;
   //1. Add the cat.png file to the sketch before running.
   PImage img = loadImage("cat.png");
