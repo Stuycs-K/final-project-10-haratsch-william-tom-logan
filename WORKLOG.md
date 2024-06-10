@@ -48,3 +48,6 @@ Worked on functionality and presentation
 
 ### June 7th
 Added bitplane viewing
+
+### June 9th 
+Worked on presentation and readme
