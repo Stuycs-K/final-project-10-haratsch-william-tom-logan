@@ -2,7 +2,7 @@
 # THIS DOCUMENT IS REQUIRED
 ## Group Info
 Group members: William Haratsch and Logan Tom\
-Creative Team Name: Still Deciding\
+Creative Team Name: Still Deciding
 
 ## Overview
 Project layout:\
@@ -10,7 +10,7 @@ Project layout:\
         - (1) Image Steganography using a noise map for encrpytion and complexity tests to figure out where to store data\
         - Modify data using noise map to further encrypt the data \
         - Check bitplanes and create changes to bits based on calculated complexity\
-        - If a pixel is in an area of sufficient complexity data is stored there\
+        - If a pixel is in an area of sufficient complexity data is stored there
  
 
 ## Instructions
