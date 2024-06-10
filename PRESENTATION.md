@@ -19,7 +19,7 @@ Essentially what BPCS steganography does is check each pixel and compare its col
 
 # Noise Map encryption
 Noise maps are functions which generate seemingly random values consistently given a seed. This lets us enocde and decode our data based off certain noise values. The encode algorithm should be something reversible given a key which the noise map generates for each pixel. We used a simple XOR function at first to do so. To solve the issue of not knowing the seed we stored the noise map seed in the first few pixels of the image. 
-Below is an image of a noise map
+Below is an image of a noise map  
 ![ppp](https://blog.demofox.org/wp-content/uploads/2021/04/perlin_8.png)
 While this image seems very random it is actually replicable and with the correct seed the exact map is recreated.
 # Our Project
