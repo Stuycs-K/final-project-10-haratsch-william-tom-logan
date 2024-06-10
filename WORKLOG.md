@@ -9,8 +9,20 @@ Completed Project Outline Draft.
 ### May 28th
 Planned out the utilization of layered noise maps, and fractals as a noise map.
 
-info
+### May 29th
+Planned out implementation of BPCS steganography in Processing.
 
+### May 30th
+Wrote code for the modifyImageBPCS() method. It iterates through the pixels, checking for complexity. If the complexity is below a certain threshhold, the data will be written into the pixel.
+
+At home: completed a simpler implementation of the modifyImageBPCS() method. Will then complexify the implementation/add use cases.
+
+### June 5th
+Rewrote the modifyImageBPCS() method, comparing the pixel before the pixel in question, the pixel after the pixel in question, and the pixel in question itself to determine whether to add the data to the pixel's channels. Tested an LSB implementation with red channel first, and then expanded it to all channels.
+
+### June 7th
+Added complexity algorithm, which calculates entropy values for each bit plane of each pixel. This will then be used to determine whether a bitplane is complex enough to store data.
+* Logs are copied from William's branch
 
 ## Logan Tom
 
