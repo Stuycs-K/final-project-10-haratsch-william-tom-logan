@@ -12,7 +12,7 @@ int MODE = BPCS_FILE;
 void setup() {
   size(1200, 600);
   //0. If you want to change the size to display the image you can print the dimensions here:
-  int blockSize = 4;
+  int blockSize = 16;
   //1. Add the cat.png file to the sketch before running.
   PImage img = loadImage("cat.png");
   println(img.width,img.height);
@@ -28,11 +28,11 @@ void setup() {
      parts = messageToArray(messageToEncode);
      //modifyImageBPCS(img, parts);
   }else if(MODE == BPCS_FILE){
-    parts = fileToArray("OriginalGrumpy.png");
+    parts = fileToArray("AthensAncient.jpg");
     println("Number of bytes:" + parts.length/4);
     int numBlocksX = img.width / blockSize;
     int numBlocksY = img.height / blockSize;
-    float threshold = 0.99;
+    float threshold = 0.995;
     modifyImageBPCS(img, parts, threshold);
   }
     else{
@@ -235,10 +235,11 @@ void modifyImageBPCS(PImage img, int[] messageArray) {
 }
 */
 
+/*
 //modifyImageBPCS() integrated with entropy fucntion
 void modifyImageBPCS(PImage img, int[] messageArray, float threshold) {
     img.loadPixels();
-    int blockSize = 4;
+    int blockSize = 16;
     float[][][] entropies = calculateAllEntropies(img, blockSize);
     // Index for the messageArray
     int index = 0;
@@ -280,7 +281,61 @@ void modifyImageBPCS(PImage img, int[] messageArray, float threshold) {
     }
     img.updatePixels();
 }
+*/
 
+void modifyImageBPCS(PImage img, int[] messageArray, float threshold) {
+    img.loadPixels();
+    int blockSize = 16; 
+    float[][][] entropies = calculateAllEntropies(img, blockSize);
+    int index = 0; // Index for the messageArray
+
+    outerLoop:
+    for (int blockY = 0; blockY < img.height; blockY += blockSize) {
+        for (int blockX = 0; blockX < img.width; blockX += blockSize) {
+            int blockIndexY = blockY / blockSize;
+            int blockIndexX = blockX / blockSize;
+            // Ensure block indices are within bounds of the entropies array
+            if (blockIndexY >= entropies.length || blockIndexX >= entropies[0].length) {
+                continue;
+            }
+            if (index >= messageArray.length) {
+                break outerLoop;
+            }
+            for (int bit = 0; bit < 3; bit++) {  // Focus on the last 4 bits
+                if (entropies[blockIndexY][blockIndexX][bit] > threshold) {
+                    for (int y = blockY; y < blockY + blockSize && y < img.height; y++) {
+                        for (int x = blockX; x < blockX + blockSize && x < img.width; x++) {
+                            if (index >= messageArray.length) {
+                                break outerLoop;
+                            }
+                            int idx = y * img.width + x;
+                            color currentPixel = img.pixels[idx];
+                            int redPixel = (int) red(currentPixel);
+                            int greenPixel = (int) green(currentPixel);
+                            int bluePixel = (int) blue(currentPixel);
+                            if (index < messageArray.length && (redPixel & (1 << bit)) != (messageArray[index] & (1 << bit))) {
+                                redPixel = (redPixel & ~(1 << bit)) | (messageArray[index] & (1 << bit));
+                                img.pixels[idx] = color(redPixel, greenPixel, bluePixel);
+                                index++;
+                            }
+                            if (index < messageArray.length && (greenPixel & (1 << bit)) != (messageArray[index] & (1 << bit))) {
+                                greenPixel = (greenPixel & ~(1 << bit)) | (messageArray[index] & (1 << bit));
+                                img.pixels[idx] = color(redPixel, greenPixel, bluePixel);
+                                index++;
+                            }
+                            if (index < messageArray.length && (bluePixel & (1 << bit)) != (messageArray[index] & (1 << bit))) {
+                                bluePixel = (bluePixel & ~(1 << bit)) | (messageArray[index] & (1 << bit));
+                                img.pixels[idx] = color(redPixel, greenPixel, bluePixel);
+                                index++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    img.updatePixels();
+}
 
 //complexity algorithm
 import java.util.HashMap;
