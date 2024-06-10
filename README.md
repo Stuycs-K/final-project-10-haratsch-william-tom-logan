@@ -23,7 +23,7 @@ export PATH=$PATH:[PATH-TO-PROCESSING-APPLICATION]
 source ~/.bashrc
 processing-java --version
 ```
-Note: The export should go at the end of the bashrc file. 
+Note: The export should go at the end of the bashrc file. \
 To run the project:
 ```
 cd ~/Documents/Processing/(Insert your sketch directory)
