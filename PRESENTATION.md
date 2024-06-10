@@ -1,14 +1,14 @@
 # BPCS 
 ## Bit planes
-A bit plane is essentially one eighth of the image where you take off each bit using the 0 or 1 value for black and white and create an image off those values. If the red value is 01100100 the bit plane values for this is
-First: 0
-Second: 1
-Third: 1
-Fourth: 0
-Fifth: 0
-Sixth: 1
-Seventh: 0
-Eighth: 0
+A bit plane is essentially one eighth of the image where you take off each bit using the 0 or 1 value for black and white and create an image off those values. If the red value is 01100100 the bit plane values for this is\
+First: 0\
+Second: 1\
+Third: 1\
+Fourth: 0\
+Fifth: 0\
+Sixth: 1\
+Seventh: 0\
+Eighth: 0\
 and each plane is made up of these values for the color instead of the original 01100100. 
 Below is a visual example
 ![Here is an image example](https://upload.wikimedia.org/wikipedia/commons/4/48/Lichtenstein_bitplanes.png)
