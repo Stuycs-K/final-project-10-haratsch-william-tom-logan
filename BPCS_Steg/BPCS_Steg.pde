@@ -12,7 +12,7 @@ int MODE = BPCS_FILE;
 void setup() {
   size(1200, 600);
   //0. If you want to change the size to display the image you can print the dimensions here:
-  int blockSize = 60;
+  int blockSize = 4;
   //1. Add the cat.png file to the sketch before running.
   PImage img = loadImage("cat.png");
   println(img.width,img.height);
@@ -32,8 +32,8 @@ void setup() {
     println("Number of bytes:" + parts.length/4);
     int numBlocksX = img.width / blockSize;
     int numBlocksY = img.height / blockSize;
-    float[][][] entropies = calculateAllEntropies(img, blockSize);
-    //modifyImageBPCS(img, parts);
+    float threshold = 0.99;
+    modifyImageBPCS(img, parts, threshold);
   }
     else{
     String messageToEncode = "This is a message encoded using LSBSteganography. There are two modes that can be selected. This text is getting longer but is just used to make more pixels different.";
@@ -68,6 +68,7 @@ int[] fileToArray(String filename) {
   return parts;
 }
 
+/*
 int [] messageToArray(String s) {
   int[]parts = new int[s.length() * 4]; //optionally include the terminating character here.
   char[] stringArray = s.toCharArray();
@@ -95,7 +96,7 @@ int [] messageToArray(String s) {
         parts[index++] = value;
     }
   }
-  /**Verify the contents of the array before you do more.
+  /*Verify the contents of the array before you do more.
    'T' -> 01010100 -> 01 01 01 00 -> 1, 1, 1, 0
    'h' -> 01101000 -> 01 10 10 00 -> 1, 2, 2, 0
    'i' -> 01101001 -> 01 10 10 01 -> 1, 2, 2, 1
@@ -109,7 +110,19 @@ int [] messageToArray(String s) {
   for(int k = 0; k < (s.length() * 4); k++){
     print(parts[k]);
   }
-  */
+  return parts;
+}
+*/
+
+int[] messageToArray(String s) {
+  int[] parts = new int[s.length() * 8];
+  char[] stringArray = s.toCharArray();
+  int index = 0;
+  for (char c : stringArray) {
+    for (int i = 0; i < 8; i++) {
+      parts[index++] = (c >> i) & 1;
+    }
+  }
   return parts;
 }
 
@@ -169,6 +182,8 @@ void modifyImage(PImage img, int[]messageArray) {
   img.updatePixels();
 }
 
+//old modifyImageBPCS()
+/*
 void modifyImageBPCS(PImage img, int[] messageArray) {
     img.loadPixels();
     int index = 0; // Index for the messageArray
@@ -218,6 +233,54 @@ void modifyImageBPCS(PImage img, int[] messageArray) {
     }
     img.updatePixels();
 }
+*/
+
+//modifyImageBPCS() integrated with entropy fucntion
+void modifyImageBPCS(PImage img, int[] messageArray, float threshold) {
+    img.loadPixels();
+    int blockSize = 4;
+    float[][][] entropies = calculateAllEntropies(img, blockSize);
+    // Index for the messageArray
+    int index = 0;
+
+    outerLoop:
+    for (int blockY = 0; blockY < img.height; blockY += blockSize) {
+        for (int blockX = 0; blockX < img.width; blockX += blockSize) {
+            if (index >= messageArray.length) break outerLoop;
+            for (int bit = 0; bit < 8; bit++) {
+                if (entropies[blockY / blockSize][blockX / blockSize][bit] > threshold) {
+                    for (int y = blockY; y < blockY + blockSize && y < img.height; y++) {
+                        for (int x = blockX; x < blockX + blockSize && x < img.width; x++) {
+                            if (index >= messageArray.length) break outerLoop;
+                            int idx = y * img.width + x;
+                            color currentPixel = img.pixels[idx];
+                            int redPixel = (int) red(currentPixel);
+                            int greenPixel = (int) green(currentPixel);
+                            int bluePixel = (int) blue(currentPixel);
+                            if (index < messageArray.length && (redPixel & (1 << bit)) != (messageArray[index] & (1 << bit))) {
+                                redPixel = (redPixel & ~(1 << bit)) | (messageArray[index] & (1 << bit));
+                                img.pixels[idx] = color(redPixel, greenPixel, bluePixel);
+                                index++;
+                            }
+                            if (index < messageArray.length && (greenPixel & (1 << bit)) != (messageArray[index] & (1 << bit))) {
+                                greenPixel = (greenPixel & ~(1 << bit)) | (messageArray[index] & (1 << bit));
+                                img.pixels[idx] = color(redPixel, greenPixel, bluePixel);
+                                index++;
+                            }
+                            if (index < messageArray.length && (bluePixel & (1 << bit)) != (messageArray[index] & (1 << bit))) {
+                                bluePixel = (bluePixel & ~(1 << bit)) | (messageArray[index] & (1 << bit));
+                                img.pixels[idx] = color(redPixel, greenPixel, bluePixel);
+                                index++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    img.updatePixels();
+}
+
 
 //complexity algorithm
 import java.util.HashMap;
@@ -245,7 +308,9 @@ float calculateEntropyForBitPlane(PImage img, int startX, int startY, int blockS
     double entropy = 0.0;
     for (int count : freq.values()) {
         double p = count / (double) (totalPixels);
-        if (p > 0) entropy -= p * Math.log(p) / Math.log(2);
+        if(p > 0){
+          entropy -= p * Math.log(p) / Math.log(2);
+        }
     }
     return (float) entropy;
 }
@@ -255,13 +320,13 @@ float[][][] calculateAllEntropies(PImage img, int blockSize) {
     int numBlocksX = img.width / blockSize;
     int numBlocksY = img.height / blockSize;
     float[][][] entropyValues = new float[numBlocksY][numBlocksX][8];
-
+    //for loop
     for (int blockY = 0; blockY < numBlocksY; blockY++) {
         for (int blockX = 0; blockX < numBlocksX; blockX++) {
             for (int bit = 0; bit < 8; bit++) {  // Assuming 8 bits per color channel
                 float entropy = calculateEntropyForBitPlane(img, blockX * blockSize, blockY * blockSize, blockSize, bit);
                 entropyValues[blockY][blockX][bit] = entropy;
-                println("Entropy for block (" + blockX + ", " + blockY + ") at bit " + bit + ": " + entropy);
+                //println("Entropy for block (" + blockX + ", " + blockY + ") at bit " + bit + ": " + entropy);
             }
         }
     }
