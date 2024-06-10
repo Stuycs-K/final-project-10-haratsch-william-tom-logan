@@ -26,6 +26,9 @@ Added complexity algorithm, which calculates entropy values for each bit plane o
 ### June 8th
 Integrated the complexity algorithm with the modifyImageBPCS() method. modifyImageBPCS() now takes into account entropy of each bit plane within a block of the image using a predetermined mathematical formula to come up with an entropy value between 0 and 1, rather than simply checking if pixels are identical. 
 
+### June 10th
+Merged BPCS code with main branch.
+
 * Logs are copied from William's branch
 
 ## Logan Tom
