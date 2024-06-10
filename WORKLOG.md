@@ -23,6 +23,11 @@ Rewrote the modifyImageBPCS() method, comparing the pixel before the pixel in qu
 ### June 7th
 Added complexity algorithm, which calculates entropy values for each bit plane of each pixel. This will then be used to determine whether a bitplane is complex enough to store data.
 
+At home: further tested the complexity algorithm with judicious print statements, testing the effect of various blockSizes. Also determined why certain pixel bits within each block have an entropy of 0. Simply the variation of 0s and 1s is so low that it is either all 0s or all 1s within the bitplane.
+
+### June 8th
+Integrated the complexity algorithm with the modifyImageBPCS() method. modifyImageBPCS() now takes into account entropy of each bit plane within a block of the image using a predetermined mathematical formula to come up with an entropy value between 0 and 1, rather than simply checking if pixels are identical. 
+
 ## Logan Tom
 
 ### date x
