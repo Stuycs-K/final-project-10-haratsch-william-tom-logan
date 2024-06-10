@@ -30,5 +30,9 @@ cd ~/Documents/Processing/(Insert your sketch directory)
 processing-java --sketch=$(pwd) --run
 //To run with arguments
 processing-java --sketch=/path/to/your/sketch --run --args arg1 arg2 arg3
+//arg 0 is blockSize
+//arg 1 is threshold
+//arg 2 is the hidden image
+//arg 3 is whether or not to print the entropy values. 0 being don't print and 1 being print.
 ```
 Note: make sure the sketch and directory have the same name.
