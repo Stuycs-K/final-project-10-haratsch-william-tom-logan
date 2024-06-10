@@ -16,7 +16,7 @@ Video link: FOO
 ### Disclaimer
 We were not able to fully implement the decode due to some 
 ## Instructions
-To run our project in the terminal you have to update the bashrc file. The code for which is below\
+To run our project in the terminal you have to update the bashrc file. The code for which is below
 ```
 nano ~/.bashrc
 export PATH=$PATH:[PATH-TO-PROCESSING-APPLICATION] 
@@ -24,7 +24,7 @@ source ~/.bashrc
 processing-java --version
 ```
 Note: The export should go at the end of the bashrc file. 
-To run the project:\
+To run the project:
 ```
 cd ~/Documents/Processing/(Insert your sketch directory)
 processing-java --sketch=$(pwd) --run
