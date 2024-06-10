@@ -2,6 +2,7 @@
 # THIS DOCUMENT IS REQUIRED
 ## Group Info
 Group members: William Haratsch and Logan Tom
+
 Team Name: Logan's Will, I am
 
 ## Overview
