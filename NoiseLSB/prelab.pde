@@ -5,7 +5,7 @@ int FILE = 2;
 int NOISE = 3;
 int MODE = LINEAR;
 int fileSize = 125208;
-int NOISE_SEED = 0;
+int NOISE_SEED = 8;
 
 
 //Note: for code that runs one time place all code in setup.
@@ -24,7 +24,7 @@ void setup() {
   //if (MODE== FILE) {
   //  parts=fileToArray("inputdata.png");
   //} else {
-    String messageToEncode = "hiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgd bans bvdqjdasi dhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgd";
+  String messageToEncode = "hiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgd bans bvdqjdasi dhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgdhiidsjaoijdwaojdojsdlajsdiqjwdasdlkjqwoudhqwouhdaiushdoiuhlkjhawsiuyhdawibndawiuhdajhsdkjasbdiuawhgdwajbdawjhgd";
   parts = messageToArray(messageToEncode);
   //}
   //3. Write the MODIFY method.
@@ -36,7 +36,7 @@ void setup() {
   //image(img, 0, 0);
   // decode
   if (MODE == LINEAR|| MODE == SELECTIVE) {
-    print(MODE);
+    //print(MODE);
     //println(decode(toDecode));
   } else {
     byte[] b = extractBytes(toExtract, fileSize);
@@ -164,7 +164,54 @@ String decode(PImage img) {
   }
   return returns;
 }
+//void decodeNoise(PImage img) {
+//  println("decoding");
+//  String returns = "";
+//  int[] parts = new int[img.pixels.length];
+//  //extract seed from image
+//  img.loadPixels();
+//  String seed_binary = "";
+//  for (int i = 0; i < 32; i++) {
+//    seed_binary += (int)red(img.pixels[i]) % 2;
+//  }
+//  int seed = Integer.parseInt(seed_binary, 2);
+//  noiseSeed(seed);
+//  //use noise to get string out
+//  for (int i = 32; i < 23636; i++) {
+//    float val = noise(i);
+//    if (val > .6) {
+//      parts[i - 32] = (int)red(img.pixels[i]) % 4;
+//    }
+//    if (val > .5) {
+//      parts[i - 32] = (int)blue(img.pixels[i]) % 4;
+//    }
+//    if (val > 0) {
+//      parts[i - 32] = (int)green(img.pixels[i]) % 4;
+//    }
+//    //if (i >= 35 && parts[i - 35] == 3 && parts[i - 34] == 3 && parts[i - 33] == 3 && parts[i - 32] == 3) {
+//    //  int terminationIndex = i - 3;
+//    //  int[] truncatedMsgArray = Arrays.copyOf(parts, terminationIndex);
+//    //  parts = truncatedMsgArray;
+//    //  break;
+//    //}
+//  }
 
+//  //turn int array into binary string
+//  String bin = "";
+//  for (int i = 0; i < parts.length; i++) {
+//    if (parts[i] == 0) bin += "00";
+//    if (parts[i] == 1) bin += "01";
+//    if (parts[i] == 2) bin += "10";
+//    if (parts[i] == 3) bin += "11";
+//  }
+//  //binary string to String
+//  //for (int i = 0; i < bin.length(); i += 8) {
+//  //  String temp = bin.substring(i, i + 8);
+//  //  char letter = (char) Integer.parseInt(temp, 2);
+//  //  returns += letter;
+//  //}
+//  print(returns);
+//}
 
 
 
@@ -198,28 +245,35 @@ void modifyImage(PImage img, int[]messageArray) {
       bin_seed[j] = temp_seed % 2;
       temp_seed = temp_seed / 2;
     }
-    for (int i = 0; i < messageArray.length; i++) {
+    for (int i = 0; i < messageArray.length + 32; i++) {
       color tmp = img.pixels[i];
       float red_val = red(tmp);
       float blue_val = blue(tmp);
       float green_val = green(tmp);
-      if (i < 8) {
+      if (i < 32) {
         float new_red = red_val - red_val % 2 + bin_seed[i];
         color c = color(new_red, green(tmp), blue(tmp));
         img.pixels[i] = c;
-      } else if (noise(i) > .7) {
-        float new_red = red_val - red_val % 4 + messageArray[i];
+      } else if (noise(i) > .6) {
+        float new_red = red_val - red_val % 4 + messageArray[i - 32];
         color c =color(new_red, green_val, blue_val);
         img.pixels[i] = c;
       } else if (noise(i) > .5) {
-        float new_blue = blue_val - blue_val % 4 + messageArray[i];
+        float new_blue = blue_val - blue_val % 4 + messageArray[i - 32];
         color c =color(red_val, green_val, new_blue);
         img.pixels[i] = c;
-      } else if (noise(i) > .2) {
-        float new_green = green_val - green_val % 4 + messageArray[i];
+      } else if (noise(i) > 0) {
+        float new_green = green_val - green_val % 4 + messageArray[i- 32];
         color c =color(red_val, new_green, blue_val);
         img.pixels[i] = c;
       }
+    }
+    // store terminating thingy
+    for (int i = messageArray.length; i < messageArray.length + 4; i++) {
+      color tmp = img.pixels[i];
+      float red_val = red(tmp);
+      float new_red = red_val - red_val % 4 + 3;
+      img.pixels[i] = color(new_red, green(tmp), blue(tmp));
     }
   }
 
