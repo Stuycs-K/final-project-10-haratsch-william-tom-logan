@@ -53,6 +53,7 @@ void show_blue_bitplane(int plane) {
     text("Blue Bitplane " + plane, 800, 500);
   }
 }
+
 void show_green_bitplane(int plane) {
   PImage checking = loadImage("cat.png");
   PImage bitplane = createImage(checking.width, checking.height, RGB);
@@ -94,6 +95,11 @@ void diff(int i) {
     image(reg, 0, 0);
     text("DEFAULT", 1000, 500);
   } else if (i == 1) {
+    fill(255);
+    textSize(30);
+    image(mod, 0, 0);
+    text("MODIFIED", 1000, 500);
+  } else if (i == 2) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -106,7 +112,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF", 800, 500);
-  } else if (i == 2) {
+  } else if (i == 3) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -119,7 +125,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF_R", 800, 500);
-  } else if (i == 3) {
+  } else if (i == 4) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -132,7 +138,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF_G", 800, 500);
-  } else if (i == 4) {
+  } else if (i == 5) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -145,7 +151,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF_B", 800, 500);
-  } else if (i == 5) {
+  } else if (i == 6) {
     compared.pixels = reg.pixels;
     fill(0);
     textSize(30);
@@ -159,7 +165,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF on image", 800, 500);
-  } else if (i == 6) {
+  } else if (i == 7) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -172,7 +178,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF red on image", 800, 500);
-  } else if (i == 7) {
+  } else if (i == 8) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -185,7 +191,7 @@ void diff(int i) {
     compared.updatePixels();
     image(compared, 0, 0);
     text("DIFF blue on image", 800, 500);
-  } else if (i == 8) {
+  } else if (i == 9) {
     fill(0);
     textSize(30);
     for (int x = 0; x < reg.pixels.length; x++) {
@@ -202,7 +208,7 @@ void diff(int i) {
 }
 void keyReleased() {
   if (key == ' ') {
-    if (i < 9)
+    if (i < 10)
       diff(i++);
     else {
       i = 0;
