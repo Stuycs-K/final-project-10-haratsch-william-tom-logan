@@ -51,10 +51,10 @@ Researched BPCS and talked about how to implement
 Implement noise map into data encryption and theorized BPCS implementation
 
 ### June 3rd
-Worked on functionality and presentation
+Worked on functionality and presentation. Added images and worked on markdown for presentation.md
 
 ### June 7th
-Added bitplane viewing
+Added interactable viewing of bit planes for each color like with the diff method
 
 ### June 9th 
 Worked on presentation and readme
