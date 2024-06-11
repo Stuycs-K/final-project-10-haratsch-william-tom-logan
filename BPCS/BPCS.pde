@@ -67,7 +67,7 @@ void setup() {
     //int numBlocksX = img.width / blockSize;
     //int numBlocksY = img.height / blockSize;
     //float threshold = 0.995;
-    modifyImageBPCS(img, parts, threshold, entropyNum, maxBitPlane);
+    modifyImageBPCS(img, parts, threshold, entropyNum, maxBitPlane, blockSize);
   }
     else{
     String messageToEncode = "This is a message encoded using LSBSteganography. There are two modes that can be selected. This text is getting longer but is just used to make more pixels different.";
@@ -317,9 +317,9 @@ void modifyImageBPCS(PImage img, int[] messageArray, float threshold) {
 }
 */
 
-void modifyImageBPCS(PImage img, int[] messageArray, float threshold, int entropyNum, int maxBitPlane) {
+void modifyImageBPCS(PImage img, int[] messageArray, float threshold, int entropyNum, int maxBitPlane, int blockSize) {
     img.loadPixels();
-    int blockSize = 16; 
+    //int blockSize = 16; 
     float[][][] entropies = calculateAllEntropies(img, blockSize, entropyNum);
     int index = 0; // Index for the messageArray
 
