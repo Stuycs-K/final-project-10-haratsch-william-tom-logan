@@ -13,6 +13,7 @@ int blockSize = 0;
 float threshold = 0;
 String inputFile = "";
 int entropyNum = 0;
+int maxBitPlane = 0;
 
 //Note: for code that runs one time place all code in setup.
 void setup() {
@@ -23,15 +24,18 @@ void setup() {
   //arg 1 is threshold
   //arg 2 is the hidden image
   //arg 3 is whether or not to print the entropy values. 0 being don't print and 1 being print.
+  //arg 4 is the max bit plane for which data will be embedded in the block. The greater this number (from 1 to 8), the more visually apparent the block artifacts will be.
   int blockSize = 0;
   float threshold = 0;
   String inputFile = "";
   int entropyNum = 0;
+  int maxBitPlane = 0;
   if (args != null) {
     blockSize = int(args[0]);
     threshold = float(args[1]);
     inputFile = args[2];
     entropyNum = int(args[3]);
+    maxBitPlane = int(args[4]);
   } else {
     println("No arguments provided.");
     exit();
@@ -40,7 +44,8 @@ void setup() {
   println("Block Size: " + blockSize);
   println("Threshold: " + threshold);
   println("Input File: " + inputFile);
-  println("entropyNum: " + entropyNum);
+  println("entropyNum On/Off Switch: " + entropyNum);
+  println("Maximum Bit Plane to embed data in: " + maxBitPlane);
   //int blockSize = 16;
   //1. Add the cat.png file to the sketch before running.
   PImage img = loadImage("cat.png");
@@ -62,7 +67,7 @@ void setup() {
     //int numBlocksX = img.width / blockSize;
     //int numBlocksY = img.height / blockSize;
     //float threshold = 0.995;
-    modifyImageBPCS(img, parts, threshold, entropyNum);
+    modifyImageBPCS(img, parts, threshold, entropyNum, maxBitPlane);
   }
     else{
     String messageToEncode = "This is a message encoded using LSBSteganography. There are two modes that can be selected. This text is getting longer but is just used to make more pixels different.";
@@ -312,7 +317,7 @@ void modifyImageBPCS(PImage img, int[] messageArray, float threshold) {
 }
 */
 
-void modifyImageBPCS(PImage img, int[] messageArray, float threshold, int entropyNum) {
+void modifyImageBPCS(PImage img, int[] messageArray, float threshold, int entropyNum, int maxBitPlane) {
     img.loadPixels();
     int blockSize = 16; 
     float[][][] entropies = calculateAllEntropies(img, blockSize, entropyNum);
@@ -323,14 +328,14 @@ void modifyImageBPCS(PImage img, int[] messageArray, float threshold, int entrop
         for (int blockX = 0; blockX < img.width; blockX += blockSize) {
             int blockIndexY = blockY / blockSize;
             int blockIndexX = blockX / blockSize;
-            // Ensure block indices are within bounds of the entropies array
+            // Check error bound, if blockIndexY and blockIndexX are within bounds of the entropies array
             if (blockIndexY >= entropies.length || blockIndexX >= entropies[0].length) {
                 continue;
             }
             if (index >= messageArray.length) {
                 break outerLoop;
             }
-            for (int bit = 0; bit < 3; bit++) {  // Focus on the last 4 bits
+            for (int bit = 0; bit < maxBitPlane; bit++) {  // Focus on the last 4 bits
                 if (entropies[blockIndexY][blockIndexX][bit] > threshold) {
                     for (int y = blockY; y < blockY + blockSize && y < img.height; y++) {
                         for (int x = blockX; x < blockX + blockSize && x < img.width; x++) {
