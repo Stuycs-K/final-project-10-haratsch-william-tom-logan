@@ -33,9 +33,10 @@ changing complex sections of bit planes allows us to store more data within imag
 
 ## Noise Map encryption
 Noise maps are functions which generate seemingly random values consistently given a seed. This lets us encode and decode our data based off certain noise values. The encode algorithm should be something reversible given a key which the noise map generates for each pixel. We used a simple XOR function at first to do so. To solve the issue of not knowing the seed we stored the noise map seed in the first few pixels of the image. 
-
 Below is an image of a noise map:
+
 ![ppp](https://blog.demofox.org/wp-content/uploads/2021/04/perlin_8.png)  
+
 While this image seems very random it is actually replicable and with the correct seed the exact map is recreated.
 ## Relationship between BPCS-Steganography and Noise Maps
 The noise-like nature of the complex regions in the bit planes ensures that any modifications do not produce human-visible patterns or artifacts. In this sense, the seemingly randomized distribution of embedded data throughout the image is a shared aspect of BPCS-Steganography and noise-map encryption, even when it is not randomized but is instead according to a pre-determined BPCS entropy function or noise function.
