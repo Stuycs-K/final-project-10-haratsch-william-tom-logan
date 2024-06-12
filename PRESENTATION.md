@@ -25,7 +25,7 @@ Essentially what BPCS steganography does is check each bit plane within a pixel 
 The brain's visual system is more sensitive to large-scale patterns and less sensitive to small-scale noise. The effect being that a human will not be able to perceive a too-complex visual pattern for what it is, and no defnitive shape can be perceived from the complex visual pattern. BPCS takes advantage of this property of the human brain by replacing complex areas of a vessel image's bit plane with embedded hidden data (which is also composed of complex patterns). The result is a modified image which appears identical to the human eye.
 
 ## Basic Rundown of BPCS-Steganography Algorithm
-![BPCS Basic Overview](https://d3i71xaburhd42.cloudfront.net/fce1a7e2a314950aee69adc820170f214034e125/2-Figure1-1.png)
+![BPCS Basic Overview](BPCS/BPCS_Diagram.png)
 
 
 ## Advantages and Disadvantages of BPCS-Steganography
@@ -33,7 +33,8 @@ changing complex sections of bit planes allows us to store more data within imag
 
 ## Noise Map encryption
 Noise maps are functions which generate seemingly random values consistently given a seed. This lets us encode and decode our data based off certain noise values. The encode algorithm should be something reversible given a key which the noise map generates for each pixel. We used a simple XOR function at first to do so. To solve the issue of not knowing the seed we stored the noise map seed in the first few pixels of the image. 
-Below is an image of a noise map  
+
+Below is an image of a noise map:
 ![ppp](https://blog.demofox.org/wp-content/uploads/2021/04/perlin_8.png)  
 While this image seems very random it is actually replicable and with the correct seed the exact map is recreated.
 ## Relationship between BPCS-Steganography and Noise Maps
