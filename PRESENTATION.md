@@ -27,7 +27,19 @@ The brain's visual system is more sensitive to large-scale patterns and less sen
 ## Basic Rundown of BPCS-Steganography Algorithm
 ![BPCS Basic Overview](BPCS/BPCS_Diagram.png)
 
+1. The given image is separated into a grid of blocks.
+    * Each block is of a given size.
+2. Iterate through the bit planes of each block in the image, until the last block.
+3. As you iterate through each bit plane, assign a complexity/entropy value between 0 and 1 to each bit plane using a complexity function.
+    * The closer the assigned value is to 1, the more complex the bit plane is.
+    * Increasing block size increases the size of the data that the bit plane in question is compared with.
+4. Reiterate through each bit plane, this time using a predetermined complexity threshold value between 0 and 1 to decide whether or not to encrypt the data in the bit plane.
+    * The closer the threshold value is to 1, the higher the standards are for data embedding. If the threshold value is closer to 0, the visual artifacts in the modified image may be more visually apparent.
+    * You can choose the max bit plane for which data will be embedded into the vessel image. Note that there are 8 bit planes. Increasing the max bit plane will increase the visual distortion of the modified image.
+### Complexity Function
+![Complexity Function](BPCS/ComplexityFunction.png)
 
+* This function keeps track of the frequencies of each bit value (0 or 1) within a bit plane to come up with a complexity value in the range of (0, 1).
 ## Advantages and Disadvantages of BPCS-Steganography
 ### Advantages of BPCS
 * Changing complex sections of bit planes allows us to store more data within images compared to LSB, which is only able to alter 1/8th of each pixel.
