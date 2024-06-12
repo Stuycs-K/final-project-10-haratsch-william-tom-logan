@@ -64,11 +64,17 @@ Our project uses both BPCS steganography and Noise maps to encrypt data and save
 ## Modifying images
 Using the modify image method and passing the image to be modified, data(as file or String), and the noise map seed will convert the data into an array which is to be encrypted
 Then it encrypts the data using the seed and stores the data in the image using BPCS.
-What the user will see is a screen of the modified image. Then pressing space will allow you to go through the image checking the different pixels and either highlighting them or showing them as a black and white screen.
-The modified image will be stored in modifiedImage.jpg and can be accessed there. 
-You are also able to use the `r`, `g`, and `b` keys to view the bit planes of those colors and try to see how much they were altered and where they were altered through the steganography
+What the user will see is a screen of the modified image. Then pressing `space bar` will allow you to go through the image checking the different pixels and either highlighting them or showing them as a black and white screen.
+The modified image will be stored in `modifiedImage.png` and can be accessed there. 
+You are also able to use the `r`, `g`, and `b` keys to view the bit planes of those colors and try to see how much they were altered and where they were altered through the steganography.
 ## Decoding images
-To decode an image you have to give the modified file and whether or not the data was a file or string
-This will either print a string in the terminal or save the encrypted image as a file
+There are multiple ways to attempt to decode images encoded with BPCS-Steganography. Here is one method:
 
+1. Divide the image into non-overlapping blocks of the size given when encoding.
+2. Iterate through each bit plane of each image block, calculating and assigning bit plane complexities as you go. 
+    * Make sure to use the same complexity function as was used during encoding.
+3. Compare bit plane complexities to the threshold value which was determined when encoding.
+    * Bit planes with a complexity value above this threshold are considered to contain embedded data.
+4. For bit planes considered to contain embedded data, extract the bits from these blocks and resassemble the data.
 
+Note that a flaw with this method is that when embedding the image data into a bit plane, it's not certain that the altered bit plane is still above the complexity threshold.S
