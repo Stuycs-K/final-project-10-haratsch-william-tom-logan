@@ -12,7 +12,7 @@ Project layout:\
         - Then it uses bpcs to go through bitplanes, sectioning reigons into specific block sizes and create changes to bits based on the  calculated complexity of those blocks\
         - Then data is stored in the blocks\
 Presentation link: https://github.com/Stuycs-K/final-project-10-haratsch-william-tom-logan/blob/main/PRESENTATION.md \
-Video link: FOO
+Video link: https://drive.google.com/file/d/12jblgbURnfogcX1eSsbnAQ5lsepJqLp2/view?usp=drive_link \
 ### Disclaimer
 We were not able to fully implement the decode due to its unexpected complexity and difficulty to implement. Due to how BPCS works it is not as easy to reverse the encoding as the complexity values after the data has been added are changed and there is no stored previous complexity value to go off of.
 ## Instructions
