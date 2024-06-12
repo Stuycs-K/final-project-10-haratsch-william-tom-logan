@@ -31,6 +31,12 @@ Merged BPCS code with main branch.
 
 * Logs are copied from William's branch
 
+### June 11th
+Edited video and rerecorded parts missing audio.
+
+### June 12th
+Uploaded video and completed PRESENTATION.md.
+
 ## Logan Tom
 
 ### May 23rd
