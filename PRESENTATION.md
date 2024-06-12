@@ -29,7 +29,14 @@ The brain's visual system is more sensitive to large-scale patterns and less sen
 
 
 ## Advantages and Disadvantages of BPCS-Steganography
-changing complex sections of bit planes allows us to store more data within images compared to LSB only being able to alter 1/8th of each pixel.
+### Advantages of BPCS
+* Changing complex sections of bit planes allows us to store more data within images compared to LSB, which is only able to alter 1/8th of each pixel.
+* Using complex bit planes and an entropy calculation function for each bit plane adds an extra layer of security to the digital steganography. Without knowing the exact entropy function used to decide which bit plane sections are complex and which aren't, it is difficult for outsiders to detect and extract the hidden data.
+* BPCS is very flexible in that many parameters can be changed depending on one's use case. This also makes it more difficult for outsiders to detect and extract the hidden data because you will more than likely need all the encoding presets before decoding.
+### Disadvantages of BPCS
+* Decreasing the block size means there will more blocks to iterate through and thus more bit planes for which the entropy function must be utilized. This means that BPCS will be more time-consuming when quicker methods exist.
+* BPCS-Steganography is vulnerable to statistical analysis detection methods which detect anomalies in image bit planes.
+* The effectiveness of the BPCS algorithm hinges on the complexity of the vessel image. If the vessel image is too simplistic, not much data will be embedded and the changes in the modified image will be more visually apparent.
 
 ## Noise Map encryption
 Noise maps are functions which generate seemingly random values consistently given a seed. This lets us encode and decode our data based off certain noise values. The encode algorithm should be something reversible given a key which the noise map generates for each pixel. We used a simple XOR function at first to do so. To solve the issue of not knowing the seed we stored the noise map seed in the first few pixels of the image. 
