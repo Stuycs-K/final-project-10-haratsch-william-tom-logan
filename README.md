@@ -7,6 +7,8 @@ Team Name: Logan's Will I am
 ## Overview
 We implemented two Image Steganography encoding schemes. The first involves the utilization of a noise map to the hide the data in seemingly randomized locations throughout the image. The second encoding scheme we implemented is BPCS-Steganography, where BPCS is short for Bit-plane Complexity Segmentation. General information on BPCS-Steganography can be found [here](https://en.wikipedia.org/wiki/BPCS-steganography). A research paper detailing one of the first implementations of BPCS-Steganography can be found [here](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=b701dfd8d262a64926ed05b6a29207fa3078116f).
 
+Information on the Qtech Hide & View tool, which performs BPCS-Steganography embedding and extracting operations similar to what we are trying to do in our project as described in our [PRESENTATION.md]https://github.com/Stuycs-K/final-project-10-haratsch-william-tom-logan/blob/main/PRESENTATION.md, can be found [here](http://datahide.org/BPCSe/QtechHV-program-e.html).
+
 Presentation link: https://github.com/Stuycs-K/final-project-10-haratsch-william-tom-logan/blob/main/PRESENTATION.md 
 
 Video link: https://drive.google.com/file/d/12jblgbURnfogcX1eSsbnAQ5lsepJqLp2/view?usp=drive_link 
